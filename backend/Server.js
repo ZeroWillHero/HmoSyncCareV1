@@ -7,6 +7,8 @@ const signupRoute = require('./routers/signup');
 const logInRoute = require('./routers/login');
 const profileRoute = require('./routers/profile');
 const CurrentAppoinment = require('./routers/CurrentAppoinment');
+const adminRoutes = require ('./routers/adminRoutes');
+
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -26,6 +28,7 @@ app.use('/signup',signupRoute);
 app.use('/login',logInRoute);
 app.use('/profile',profileRoute);
 app.use('/current',CurrentAppoinment);
+app.use('/admin',adminRoutes);
 
 
 

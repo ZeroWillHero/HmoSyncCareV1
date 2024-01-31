@@ -1,0 +1,13 @@
+
+
+
+{
+    "name": "admin",
+    "email": "chameerasandakelum69@gmail.com",
+    "password": "admin1234",
+    "is_active": 1,
+    "address": "No 1, Colombo",
+    "age": 25,
+    "dob": "1995-01-01"
+
+}
