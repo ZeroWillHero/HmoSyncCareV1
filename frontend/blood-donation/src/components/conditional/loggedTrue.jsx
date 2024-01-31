@@ -8,7 +8,6 @@ import {jwtDecode} from 'jwt-decode';
 
 export default function LoggedTrue() {
     const [data, setData] = useState({});
-    const [userData, setUserData] = useState({});
     const token = localStorage.getItem("token");
     console.log(token)
     const decodedToken = jwtDecode(token);
@@ -48,7 +47,7 @@ export default function LoggedTrue() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 5 }}
             className='w-full md:6/12 text-white z-1 min-h-56 h-auto bg-transparent pb-10'>
-            <h1 className='text-center text-5xl font-bold pt-2 mb-10'>Your progress</h1>
+            <h1 className={data[0] && data[0] ?'text-center text-5xl font-bold pt-2 mb-10' : "hidden"}>Your progress</h1>
             <div className={data[0] && data[0] ? "grid grid-cols-1 items-center justify-center w-full gap-4 md:grid-cols-3" : 'hidden'}>
                 <div className="min-h-48 h-auto bg-zinc-700 rounded-md hover:bg-zinc-600 hover:-translate-y-5 transition-all">
                     <h1 className='font-bold text-2xl text-center p-10 text-red-500'>Participate times</h1>

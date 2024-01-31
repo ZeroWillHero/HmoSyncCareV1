@@ -48,12 +48,12 @@ export default function Profile() {
 
                     <tr>
                         <td className="p-2 font-semibold">Age</td>
-                        <td className="p-2 font-semibold">22</td>
+                        <td className="p-2 font-semibold">{data.user && data.user.age}</td>
                     </tr>
 
                     <tr>
                         <td className="p-2 font-semibold">Adress</td>
-                        <td className="p-2 font-semibold">Panduwasnuwara,Hettipola</td>
+                        <td className="p-2 font-semibold">{data.user && data.user.address}</td>
                     </tr>
                    
 

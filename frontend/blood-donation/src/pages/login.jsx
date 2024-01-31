@@ -40,7 +40,8 @@ export default function Signup() {
         console.log(res);
         const data = await res.json();
         if (!res.ok) {
-            setError(data.error);
+            setError(data.message);
+            console.log(data.message)
         } else {
             localStorage.setItem("token", data.token);
             alert("Login Successful");
@@ -72,7 +73,7 @@ export default function Signup() {
                     <input className="p-2 w-8/12 h-10 mb-5  focus:outline-red-500 focus:outline-2 border-hidden rounded-sm" required value={password} onChange={handlePassword} type="password" placeholder="password" /> <br />
                     {error && <p className="text-red-500">{error}</p>}
                     <p className="text-white mb-4">Didn't have an Account? <span><Link className="underline text-violet-500" to="/signup" >signup</Link></span></p>
-                    <button className="bg-red-500 p-2 w-20 rounded-md" >Sign Up</button>
+                    <button className="bg-red-500 p-2 w-20 rounded-md" >Log in</button>
                 </form>
             </div>
 

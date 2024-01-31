@@ -44,15 +44,17 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default : Date.now()
     },
+    
+
+    dob : {
+        type: Date,
+        
+    },
+
     age : {
         type: Number,
         default : 0
     },
-
-    DoB : {
-        type: Date,
-        
-    }
 
     
 
