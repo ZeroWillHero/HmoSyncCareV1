@@ -18,9 +18,9 @@ export default function Navbar() {
         window.location.reload();
     }
     return (
-        <nav className="flex flex-col justify-between p-5 shadow-lg w-full sticky md:flex-row pb-5 bg-zinc-800 text-white">
+        <nav className="flex flex-col justify-between p-5 shadow-lg w-full sticky md:flex-row pb-5 bg-zinc-800 text-tertiary">
             <div className="flex justify-between items-center">
-                <h1 className="font-bold text-2xl text-red-500">HemoSyncCare</h1>
+                <h1 className="font-bold text-2xl text-tertiary">HemoSyncCare</h1>
                 <BiAlignJustify className="md:hidden block text-2xl" onClick={HandleShow}/>
             </div>
 
@@ -29,8 +29,8 @@ export default function Navbar() {
                     <li className="mb-2"><Link to="/" className="p-2">Home</Link></li>
                     <li className="mb-2"><Link className="p-2" to='/about'>About-Us</Link></li>
                     <li className={token ? "block mb-4" : "hidden"}><Link className="p-2" to="/profile">Profile</Link></li>
-                    <li className={token ? "hidden" : "block mb-2"}><Link className="p-2 w-20 bg-red-500 text-white font-bold rounded-md hover:bg-red-600" to="/login">Sign-in</Link></li>
-                    <li className={token ? "block mb-2" : "hidden mb-2"}><Link className="p-2 w-20 bg-red-500 text-white font-bold rounded-md hover:bg-red-600" onClick={handleLogout}>Log-out</Link></li>
+                    <li className={token ? "hidden" : "block mb-2"}><Link className="p-2 w-20 bg-tertiary text-white font-bold rounded-md hover:bg-secondary" to="/login">Sign-in</Link></li>
+                    <li className={token ? "block mb-2" : "hidden mb-2"}><Link className="p-2 w-20 bg-tertiary text-white font-bold rounded-md hover:bg-secondary" onClick={handleLogout}>Log-out</Link></li>
 
                 </ul>
             </div>
