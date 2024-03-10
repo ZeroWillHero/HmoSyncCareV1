@@ -57,7 +57,7 @@ export default function AppointForm() {
 
     return (
         <div>
-            <div className="w-full bg-zinc-800 h-auto p-5 mt-20 ">
+            <div className="w-full bg-secondary shadow-xl h-auto p-5 mt-20 ">
                 <h1 className="text-center text-2xl font-bold">Request an appoinment</h1>
                 <form className="flex flex-col items-center mt-10" onSubmit={handleSubmit}>
                     <input className="p-2 w-8/12 h-10 mb-5  focus:outline-red-500 focus:outline-2 border-hidden rounded-sm text-black" value={title} onChange={handleTitle} required type="text" placeholder="title" /> <br />

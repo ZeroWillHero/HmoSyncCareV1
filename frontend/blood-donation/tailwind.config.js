@@ -8,8 +8,9 @@ export default {
     extend: {
       colors: {
         'primary': '#215144',
-        'secondary': '#26686a',
-        'tertiary': '#36997f',
+        'secondary': '#0a3a2a',
+        'tertiary': '#92ddc8',
+        'btn' : '#137a63'
       }
     },
   },

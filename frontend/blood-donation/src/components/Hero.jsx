@@ -16,7 +16,7 @@ export default function Hero() {
     }
     
     return (
-        <div className='flex flex-col justify-center m-10 pt-20 md:justify-between md:flex-row '>
+        <div className='flex flex-col justify-center m-10 pt-20 md:justify-between md:flex-row min-h-screen '>
             <motion.div
                 animate={{
                     scale: [1, 1.05, 1],
