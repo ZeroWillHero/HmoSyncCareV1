@@ -31,7 +31,10 @@ export default function LoggedTrue() {
 
         }
         fetchData();
+        
     }, []);
+
+    
 
     const diffDays = () => {
         const date1 = new Date(data[0] && data[0].appointment_date);

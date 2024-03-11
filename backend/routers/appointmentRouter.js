@@ -27,14 +27,16 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { user_id, appointment_date, appointment_time } = req.body;
+    const { user_id, appointment_date, appointment_time,title,disease } = req.body;
     console.log(req.body)
 
     try {
         const newAppointment = new Appointment({
             user_id,
             appointment_date,
-            appointment_time
+            appointment_time,
+            title,
+            disease
         });
 
         await newAppointment.save();
@@ -44,6 +46,16 @@ router.post('/', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+router.delete('/appoint/delete/:id',async(req,res) => {
+    try {
+        const appoinment = Appointment.findOneAndDelete(id);
+    }catch(error) {
+        res.json(error.message)
+    }
+})
+
+
 
 module.exports = router;
 

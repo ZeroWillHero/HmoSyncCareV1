@@ -27,7 +27,7 @@ export default function Hero() {
                     repeat: Infinity,
                 }}
                 className='w-12/12 md:w-6/12 z-0'>
-                <img className='w-11/12 mb-8' src={hero} alt="hero" />
+                <img className='w-8/12 mb-8' src={hero} alt="hero" />
             </motion.div>
 
             {logged ? <LoggedTrue /> : <LoggedFalse />}

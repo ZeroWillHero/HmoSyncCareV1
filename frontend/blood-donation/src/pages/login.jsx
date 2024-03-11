@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Footer from "../components/Footer";
 
 
 export default function Signup() {
@@ -62,10 +63,10 @@ export default function Signup() {
 
 
     return (
-        <div className="bg-secondary min-h-screen pb-5">
+        <div className="bg-secondary min-h-screen">
             <Navbar />
 
-            <div className="flex justify-center container mx-auto">
+            <div className="flex justify-center container mx-auto mb-20">
                 <form className="w-11/12 bg-secondary flex flex-col items-center mt-20 pt-10 pb-5 rounded-xl shadow-2xl" onSubmit={handleSubmit}>
                     <h1 className="text-white text-2xl mb-4 font-bold">Hemo Sync Care</h1>
                     
@@ -76,6 +77,8 @@ export default function Signup() {
                     <button className="bg-tertiary text-zinc-900 font-bold hover:bg-btn hover:text-zinc-100 p-2 w-20 rounded-md" >Log in</button>
                 </form>
             </div>
+
+            <Footer />
 
         </div>
     )

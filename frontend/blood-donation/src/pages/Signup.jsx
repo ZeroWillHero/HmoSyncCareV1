@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Footer from "../components/Footer";
 
 export default function Signup() {
     const [firstname,setFirstname] = useState("");
@@ -76,10 +77,10 @@ export default function Signup() {
 
 
     return (
-        <div className="bg-secondary min-h-screen pb-8">
+        <div className="bg-secondary min-h-screen">
             <Navbar />
 
-            <div className="flex justify-center container mx-auto">
+            <div className="flex justify-center container mx-auto mb-20">
                 <form className="w-11/12 bg-secondary flex flex-col items-center mt-20 pt-10 pb-10 rounded-xl shadow-2xl" onSubmit={handleSubmit}>
                     <h1 className="text-white text-4xl mb-4 font-bold pb-5">HemoSyncCare</h1>
                     <input className="p-2 w-8/12 h-10 mb-5  focus:outline-red-500 focus:outline-2 border-hidden rounded-sm" required value={firstname} onChange={handleFirstname} type="text" placeholder="firstname" /> <br />
@@ -92,7 +93,11 @@ export default function Signup() {
                     <p className="text-white mb-4">Didn't have an Account?<span><Link className="underline text-violet-500" to="/login" >login</Link></span></p>
                     <button className="bg-tertiary text-zinc-900 font-bold hover:bg-btn hover:text-zinc-100 p-2 w-20 rounded-md" >Sign Up</button>
                 </form>
+
+                
             </div>
+
+            <Footer />
 
         </div>
     )

@@ -21,6 +21,8 @@ app.use((req,res,next) => {
     next();
 })
 
+
+
 // whole routes in app 
 app.use('/users',userRouters);
 app.use('/appoints',appointmentRouter);
@@ -29,7 +31,6 @@ app.use('/login',logInRoute);
 app.use('/profile',profileRoute);
 app.use('/current',CurrentAppoinment);
 app.use('/admin',adminRoutes);
-
 
 
 

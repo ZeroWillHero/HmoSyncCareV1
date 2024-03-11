@@ -48,6 +48,7 @@ export default function AppointForm() {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault();
         submitData();
     }
 

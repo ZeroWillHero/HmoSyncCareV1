@@ -1,6 +1,3 @@
-
-
-
 {
     "name": "admin",
     "email": "chameerasandakelum69@gmail.com",
@@ -9,5 +6,12 @@
     "address": "No 1, Colombo",
     "age": 25,
     "dob": "1995-01-01"
+}
 
+{
+            "user_id": "65b8f5b2ee994fe69ba749d8",
+            "title" : "Title",
+            "appointment_date": "26 january 2023",
+            "appointment_time": "00:40",
+            "disease" : "dialasies"
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { jwtDecode } from "jwt-decode";
+import Footer from "../components/Footer";
 
 export default function Profile() {
 
@@ -27,11 +28,24 @@ export default function Profile() {
 
         fetchData();
 
-    }, [])
+    }, []);
+
+    function calculateAge(birthday) {
+        const today = new Date();
+        const birthDate = new Date(birthday);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        
+        return age;
+    }
     return (
 
 
-        <div className="min-h-screen bg-secondary text-white h-auto pb-5">
+        <div className="min-h-screen bg-secondary text-white h-auto ">
             <Navbar />
             <h1 className=" mt-5 text-3xl text-center">Your profile</h1>
 
@@ -48,12 +62,12 @@ export default function Profile() {
 
                     <tr>
                         <td className="p-2 font-semibold">Age</td>
-                        <td className="p-2 font-semibold">{data.user && data.user.age}</td>
+                        <td className="p-2 font-semibold">18</td>
                     </tr>
 
                     <tr>
                         <td className="p-2 font-semibold">Adress</td>
-                        <td className="p-2 font-semibold">{data.user && data.user.address}</td>
+                        <td className="p-2 font-semibold">colombo 9</td>
                     </tr>
                    
 
@@ -62,25 +76,25 @@ export default function Profile() {
             <h1 className='text-center text-3xl font-bold pt-2 mb-10'>Your progress</h1>
             <div className='grid grid-cols-1 items-center justify-center w-full gap-4 md:grid-cols-3'>
                 <div className="min-h-48 h-auto bg-primary rounded-md hover:bg-tertiary hover:-translate-y-5 transition-all">
-                    <h1 className='font-bold text-3xl text-center p-10 text-red-500'>Participate times</h1>
-                    <h1 className='font-semibold text-5xl text-center'>{}</h1>
+                    <h1 className='font-bold text-xl text-center p-10 text-red-500'>Participate times</h1>
+                    <h1 className='font-semibold text-2xl text-center'>5</h1>
                 </div>
 
                 <div className="min-h-48 h-auto bg-primary rounded-md hover:bg-tertiary hover:-translate-y-5 transition-all">
-                    <h1 className='font-bold text-3xl text-center p-10 text-red-500'>Appointment Day</h1>
-                    <h1 className='font-semibold text-5xl text-center'>2022.12.09</h1>
+                    <h1 className='font-bold text-xl text-center p-10 text-red-500'>Appointment Day</h1>
+                    <h1 className='font-semibold text-2xl text-center'>2022.12.09</h1>
                 </div>
 
                 <div className="min-h-48 h-auto bg-primary rounded-md hover:bg-tertiary hover:-translate-y-5 transition-all ">
-                    <h1 className='font-bold text-3xl text-center p-10 text-red-500'>Remaining Day(s)</h1>
-                    <h1 className='font-semibold text-5xl text-center'>5</h1>
+                    <h1 className='font-bold text-xl text-center p-10 text-red-500'>Remaining Day(s)</h1>
+                    <h1 className='font-semibold text-2xl text-center'>5</h1>
                 </div>
             </div>
 
             <div className="mt-20">
                 <h1 className="text-3xl text-center">Appointment History</h1>
                 <div>
-                    <table cellPadding={20} className="table-auto w-full bg-zinc-700 mt-10">
+                    <table cellPadding={20} className="table-auto w-full bg-zinc-700 mt-10 mb-5">
                         <tr className="text-center text-xl bg-primary">
                             <th>Appoinment Title</th>
                             <th>Disease</th>
@@ -89,13 +103,15 @@ export default function Profile() {
 
                         <tr className="text-center bg-tertiary text-black">
                             
-                            <td>{data.appoinment && data.appoinment.title}</td>
+                            <td>appoinment 01</td>
                             <td>Headache</td>
                             <td>Completed</td>
                         </tr>
                     </table>
                 </div>
             </div>
+
+            <Footer />
         </div>
 
 

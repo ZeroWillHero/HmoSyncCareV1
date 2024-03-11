@@ -34,12 +34,7 @@ const userSchema = new mongoose.Schema({
         default : ""
     },
 
-    age : {
-        type: Number,
-        default:0
-    },
-
-   
+    
     created_at : {
         type: Date,
         default : Date.now()
@@ -72,6 +67,8 @@ const AppointmentSchema = new mongoose.Schema({
 
     title : {
         type : String,
+        
+    
    
     },
 
@@ -83,16 +80,17 @@ const AppointmentSchema = new mongoose.Schema({
 
     disease : {
         type : String
+        
     },
 
     appointment_date : {
-        type : Date,
-        default : ""
+        type : Date
+
     },
 
     appointment_time : {
         type : String,
-        default : ""
+
     },
 
     done : {

@@ -8,7 +8,7 @@ const User = models.User;
 const Appointment = models.Appointment;
 
 
-router.post('', async (req, res) => {
+router.post('/signup', async (req, res) => {
     
     const existingUser = await User.findOne({email : req.body.email});
         if(existingUser){
@@ -37,6 +37,7 @@ router.post('', async (req, res) => {
 
 router.post('/login',async(req,res) => {
     const {email,password} = req.body;
+    console.log(req.body)
 
     try {
         const user = await User.findOne({ email });
@@ -51,6 +52,10 @@ router.post('/login',async(req,res) => {
             return res.status(400).json({ message: 'Invalid password' });
         }
 
+        if (!user.is_admin) {
+            return res.status(400).json({ message: 'User not authorized' });
+        }
+
         const token = jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
 
         res.json({ token, user });
@@ -58,6 +63,130 @@ router.post('/login',async(req,res) => {
         res.status(500).json({ message: error.message });
     }
 })
+
+router.delete ('/delete_user/:id', async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.params.id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json({ message: 'User deleted' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+router.post ('/create_appoinment', async (req, res) => {
+    console.log(req.body)
+    try {
+        const appointment = await Appointment.create({
+            user_id: req.body.user_id,
+            title : req.body.title,
+            appointment_date: req.body. appoinmentDate,
+            appointment_time: req.body.appointment_time,
+            disease : req.body.disease,
+            approved : req.body.approved,
+            done : req.body.done
+            
+            // Set the creation date on the server side
+        });
+
+        
+
+        
+
+        res.json(appointment);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+router.get('/appoints', async (req, res) => {
+    try {
+        const appointments = await Appointment.find();
+        const appointmentsWithUsers = await Promise.all(appointments.map(async (appointment) => {
+            const user = await User.findById(appointment.user_id);
+            return { ...appointment._doc, user };
+        }));
+        res.json(appointmentsWithUsers);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// find appoints to approve 
+router.get('/appoints/toapprove', async (req, res) => {
+    try {
+        const appointments = await Appointment.find({approved: false});
+        const appointmentsWithUsers = await Promise.all(appointments.map(async (appointment) => {
+            const user = await User.findById(appointment.user_id);
+            return { ...appointment._doc, user };
+        }));
+        res.json(appointmentsWithUsers);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// find approved appoints
+
+
+router.get('/appoints/approved', async (req, res) => {
+    try {
+
+        const appointments = await Appointment.find({approved : true});
+        const appointmentsWithUsers = await Promise.all(appointments.map(async (appointment) => {
+            const user = await User.findById(appointment.user_id);
+            return { ...appointment._doc, user };
+        }));
+        res.json(appointmentsWithUsers);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+router.get('/appoints/done', async (req, res) => {
+    try {
+        const appointments = await Appointment.find({approved : false});
+        const appointmentsWithUsers = await Promise.all(appointments.map(async (appointment) => {
+            const user = await User.findById(appointment.user_id);
+            return { ...appointment._doc, user };
+        }));
+        res.json(appointmentsWithUsers);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+router.delete('/appoinments/delete/:id', async (req, res) => {
+    try {
+        const appointment = await Appointment.findByIdAndDelete(req.params.id);
+        if (!appointment) {
+            return res.status(404).json({ message: 'Appointment not found' });
+        }
+        res.json({ message: 'Appointment deleted' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+router.patch('/appoints/update/:id', async (req, res) => {
+    try {
+        const appointment = await Appointment.findByIdAndUpdate(req.params.id, {
+            appointment_date: req.body.appointment_date,
+            approved: true
+        }, { new: true });
+
+        if (!appointment) {
+            return res.status(404).json({ message: 'Appointment not found' });
+        }
+
+        res.json(appointment);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 
 
