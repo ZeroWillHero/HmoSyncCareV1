@@ -1,6 +1,8 @@
 import { useState } from "react"
 
 
+
+
 export default function AdminLog () {
     const [data,setData] = useState({});
     const [email,setEmail] = useState('');
@@ -44,6 +46,8 @@ export default function AdminLog () {
     const handleSubmit = (e) => {
         submitData();
         e.preventDefault();
+       
+        
 
     }
 

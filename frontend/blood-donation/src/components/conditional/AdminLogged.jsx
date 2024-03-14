@@ -3,9 +3,18 @@ import Appoinment from "../Appoinments"
 import AddAppoint from "../AddAppoint"
 import Approved from "../Approved"
 import ToApprove from "../ToApprove"
+
+
+
+import { useEffect, useState } from "react";
 export default function AdminLogged() {
     return (
-        <div className="bg-secondary min-h-screen text-white h-auto pb-10">
+    
+        <div>
+            {/* <div>
+                <p>You are not authorize to visit this page</p>
+            </div> */}
+            <div className="bg-secondary min-h-screen text-white h-auto pb-10">
             <div>
                 <div className="flex justify-start">
                     <GiKidneys className="text-red-500 text-5xl me-5 p-2" />
@@ -31,6 +40,7 @@ export default function AdminLogged() {
             <div>
                 <ToApprove />
             </div>
+        </div>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 export default function ToApprove() {
     const [data, setData] = useState([]);
     const [show, setShow] = useState(false);
+    const [appoint, setAppoint] = useState('');
 
     useEffect(() => {
         fetch("http://localhost:3000/admin/appoints/toapprove")
@@ -41,7 +42,8 @@ export default function ToApprove() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    approved: true
+                    approved: true,
+                    appoinment_date : appoint,
                 })
             }
         ).then(res => res.json())
@@ -52,6 +54,10 @@ export default function ToApprove() {
             .catch(error => {
                 console.error(error);
             });
+    }
+
+    function handleDate(e) {
+        setAppoint(e.target.value)
     }
 
 
@@ -89,7 +95,7 @@ export default function ToApprove() {
                            
                                 <div className={show ? "bg-secondary w-full h-auto p-2 rounded-md" : "hidden"}>
 
-                                    <input type="date" className="w-4/12" />
+                                    <input type="date" className="w-4/12" onChange={handleDate} value={appoint} />
                                     <button className="p-2 bg-green-500 rounded-sm m-3" onClick={() => approve(item._id)}>approve</button>
 
                                 </div>
